@@ -1,5 +1,5 @@
 #include <sstream>
-#include <json/json.h>
+#include "json11.hpp"
 #include "JsonResponse.h"
 
 using namespace std;
@@ -13,13 +13,7 @@ namespace Mongoose
 
     string JsonResponse::getBody()
     {
-        if (humanReadable) {
-            Json::StyledWriter writer;
-            return writer.write(*this);
-        } else {
-            Json::FastWriter writer;
-            return writer.write(*this);
-        }
+        return json11::Json(*this).dump();
     }
 
     void JsonResponse::setHuman(bool human)

@@ -4,7 +4,7 @@
 #include <map>
 #include <sstream>
 #include <iostream>
-#include <json/json.h>
+#include <json11.hpp>
 
 #include "Response.h"
 
@@ -15,7 +15,7 @@ using namespace std;
  */
 namespace Mongoose
 {
-    class JsonResponse : public Json::Value, public Response
+    class JsonResponse : public json11::Json::object, public Response
     {
         public:
             JsonResponse();
